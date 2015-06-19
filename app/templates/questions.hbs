@@ -1,0 +1,8 @@
+<h1>Basilica Aemilia</h1>
+
+<h2>Questions</h2>
+  <ul>
+    {{#each question in model}}
+      <li><b>{{question.name}}: {{#link-to 'question' question.id}}{{question.question}}{{/link-to}}</b></li>
+    {{/each}}
+  </ul>

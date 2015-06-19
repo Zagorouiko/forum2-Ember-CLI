@@ -1,0 +1,32 @@
+<h2>{{model.name}}</h2>
+<h3>{{model.description}}</h3>
+
+  {{#if isEditing}}
+    <form>
+
+        <div class="form-group">
+          <label for="question">Question</label>
+          {{textarea id="question" class="form-control" rows=15 value=model.question}}
+        </div>
+
+        <button class="btn btn-primary" {{action 'save'}}>Save</button>
+    </form>
+
+  {{else}}
+    <p>{{model.question}}</p>
+
+    <span class="glyphicon glyphicon-pencil red" {{action 'edit'}}></span>
+      <span class="glyphicon glyphicon-remove-sign" {{action 'delete'}}></span>
+  {{/if}}
+
+
+<h1>Answers</h1>
+{{#each answer in model.answers}}
+<ul>
+<li>{{answer.text}}: {{answer.date}} <span class="glyphicon glyphicon-remove-sign" {{action "deleteAnswer" answer}}></span></li>
+</ul>
+{{/each}}
+
+<p>{{#link-to 'new-answer' class="btn btn-default"}}New Answer{{/link-to}}</p>
+
+{{outlet}}
